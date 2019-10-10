@@ -24,14 +24,22 @@ app.use((req, res, next) => {
     next();
 });
 
+function getQuery(originalURL) {
+    return originalURL.indexOf("?") >= 0
+        ? originalURL.substr(originalURL.indexOf("?") + 1)
+        : "";
+}
+
 app.get(["/", "/s/"], (req, res) => {
     const fullURL = config.get("baseURL") + "/";
+
     try {
         matomo.trackVisit(
             "",
             fullURL,
             req.headers["user-agent"] || "",
-            req.headers["referer"] || ""
+            req.headers["referer"] || "",
+            getQuery(req.originalUrl)
         );
 
         return res.redirect(302, fullURL);
@@ -64,7 +72,8 @@ app.get("/s/:slug", [
                 slug,
                 fullURL,
                 req.headers["user-agent"] || "",
-                req.headers["referer"] || ""
+                req.headers["referer"] || "",
+                getQuery(req.originalUrl)
             );
 
             return res.redirect(302, fullURL);

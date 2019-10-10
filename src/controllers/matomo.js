@@ -7,15 +7,16 @@ matomo.on("error", function(err) {
     console.error(`Matomo error: ${err}`);
 });
 
-exports.trackVisit = function trackVisit(slug, fullURL, userAgent, referrer) {
+exports.trackVisit = function trackVisit(slug, fullURL, userAgent, referrer, query) {
     matomo.track({
         url: `${config.get("baseURL")}/s/${slug}`,
         action_name: "Unshorten",
-        ua: userAgent,
-        urlref: referrer,
+        ua: userAgent || "",
+        urlref: referrer || "",
         cvar: JSON.stringify({
             "1": ["fullURL", fullURL],
-            "2": ["slug", slug]
+            "2": ["slug", slug],
+            "3": ["query", query || ""]
         })
     });
 };
