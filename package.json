@@ -1,0 +1,35 @@
+{
+  "name": "@diehauswirtschaft/schurli",
+  "version": "0.1.0",
+  "description": "A short URL service with Matomo for statistics.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diehauswirtschaft/schurli.git"
+  },
+  "keywords": [
+    "url",
+    "shortener",
+    "matomo"
+  ],
+  "author": "Philipp Naderer-Puiu",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/diehauswirtschaft/schurli/issues"
+  },
+  "homepage": "https://github.com/diehauswirtschaft/schurli#readme",
+  "dependencies": {
+    "@google-cloud/firestore": "^2.4.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.2.0",
+    "matomo-tracker": "^2.2.1",
+    "nconf": "^0.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.3"
+  }
+}

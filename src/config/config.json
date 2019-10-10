@@ -1,0 +1,8 @@
+{
+    "port": 8080,
+    "baseURL": "https://example.com",
+    "matomo": {
+        "url": "https://example.com/matomo.php",
+        "site": "1"
+    }
+}
