@@ -24,12 +24,20 @@ app.use((req, res, next) => {
     next();
 });
 
+/**
+ * Extracts the query string to perform some campaign monitoring.
+ * @param {string} originalURL the original request URL
+ * @return {string} only the query part without ?
+ */
 function getQuery(originalURL) {
     return originalURL.indexOf("?") >= 0
         ? originalURL.substr(originalURL.indexOf("?") + 1)
         : "";
 }
 
+/**
+ * A handler for the base URLs and the /s URL. Redirects to the configured base URL.
+ */
 app.get(["/", "/s/"], (req, res) => {
     const fullURL = config.get("baseURL") + "/";
 

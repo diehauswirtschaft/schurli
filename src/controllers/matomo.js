@@ -1,12 +1,21 @@
 const config = require("../config");
 
-var MatomoTracker = require("matomo-tracker");
+const MatomoTracker = require("matomo-tracker");
 
-var matomo = new MatomoTracker(config.get("matomo:site"), config.get("matomo:url"));
+const matomo = new MatomoTracker(config.get("matomo:site"), config.get("matomo:url"));
 matomo.on("error", function(err) {
     console.error(`Matomo error: ${err}`);
 });
 
+/**
+ * Tracks a visit to the configured Matomo tracker.
+ *
+ * @param {string} slug short slug
+ * @param {string} fullURL redirect URL
+ * @param {string} userAgent optional user agent
+ * @param {string} referrer optional user referrer
+ * @param {string} query optional query to associate the visit with a campaign
+ */
 exports.trackVisit = function trackVisit(slug, fullURL, userAgent, referrer, query) {
     matomo.track({
         url: `${config.get("baseURL")}/s/${slug}`,

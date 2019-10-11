@@ -5,6 +5,9 @@
 A short URL service with Matomo for statistics. Rewrites short URLs
 to their full version and tracks the unshortening via Matomo.
 
+You can append a `?something` to send `something` as a query variable to the Matomo tracker.
+This makes it possible to track the reach of campaigns, e.g. if you send out `/s/somePDF?foocampaign`, this will
+associate the visit with `foocampaign`.
 
 This project has been developed in the scope of [OPENhauswirtschaft][1]
 for die HausWirtschaft.
