@@ -31,7 +31,9 @@ app.use((req, res, next) => {
  */
 function getQuery(originalURL) {
     return originalURL.indexOf("?") >= 0
-        ? originalURL.substr(originalURL.indexOf("?") + 1)
+        ? originalURL
+            .substr(originalURL.indexOf("?") + 1)
+            .replace(/&?fbclid=[^&]+/i, "") // strips facebook tracking stuff
         : "";
 }
 
