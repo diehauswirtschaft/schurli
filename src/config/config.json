@@ -1,6 +1,10 @@
 {
     "port": 8080,
     "baseURL": "https://example.com",
+    "cookie": {
+        "domain": ".example.com",
+        "maxAge": 604800000
+    },
     "matomo": {
         "url": "https://example.com/matomo.php",
         "site": "1"
