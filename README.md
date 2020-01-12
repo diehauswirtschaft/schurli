@@ -9,6 +9,8 @@ You can append a `?something` to send `something` as a query variable to the Mat
 This makes it possible to track the reach of campaigns, e.g. if you send out `/s/somePDF?foocampaign`, this will
 associate the visit with `foocampaign`.
 
+<hr>
+
 This project has been developed in the scope of [OPENhauswirtschaft][1]
 for die HausWirtschaft.
 OPENhauswirtschaft is powered by the Austrian ["Klima- und Energiefonds"][2]'s
