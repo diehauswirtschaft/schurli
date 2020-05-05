@@ -109,13 +109,19 @@ app.get("/s/:slug", [
  * but will redirect them as well.
  */
 app.get(["/ignore"], (req, res) => {
+    const ignoreAlreadySet = req.cookies && req.cookies.ignore;
+
     res.cookie("ignore", "true", {
         domain: config.get("cookie:domain"),
         maxAge: config.get("cookie:maxAge"),
         secure: false
     });
 
-    res.status(200).send("\uD83C\uDF6A Cookie set \u2705");
+    res.status(200).send(
+        ignoreAlreadySet
+            ? "\uD83C\uDF6A Cookie refreshed and set again \u2705"
+            : "\uD83C\uDF6A Cookie set \u2705"
+    );
 });
 
 /**
