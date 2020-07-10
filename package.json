@@ -26,7 +26,7 @@
     "@google-cloud/firestore": "^2.6.1",
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
-    "express-validator": "^6.4.1",
+    "express-validator": "^6.6.0",
     "matomo-tracker": "^2.2.2",
     "nconf": "^0.10.0"
   },
