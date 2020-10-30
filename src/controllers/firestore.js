@@ -17,3 +17,26 @@ exports.getFullURL = async function getFullURL(slug) {
         return querySnapshot.docs[0].get("url");
     }
 };
+
+/**
+ * Returns all URLs stored in the URL collection.
+ *
+ * @param {number} limit limit the number of URLs retrieved
+ * @return {Array<{slug: string, url: string}>} the retrieved short URLs
+ */
+exports.listURLs = async function listURLs(limit = 500) {
+    const urlsRef = firestore.collection("urls");
+    const urlsSnapshot = await urlsRef.orderBy("slug").limit(limit).get();
+
+    if (urlsSnapshot.empty) {
+        return [];
+    } else {
+        return urlsSnapshot.docs.map(doc => {
+            const data = doc.data();
+            return {
+                slug: data.slug,
+                url: data.url,
+            };
+        });
+    }
+};

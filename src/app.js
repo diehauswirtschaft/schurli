@@ -125,6 +125,34 @@ app.get(["/ignore"], (req, res) => {
 });
 
 /**
+ * Lists all available short urls. This will also set the ignore cookie, since we don't want to
+ * track anyone who uses the list page.
+ */
+app.get(["/list"], async (req, res) => {
+    res.cookie("ignore", "true", {
+        domain: config.get("cookie:domain"),
+        maxAge: config.get("cookie:maxAge"),
+        secure: false
+    });
+
+    try {
+        const urls = await firestore.listURLs(500);
+
+        res.status(200).send(
+            `<html><head><meta charset="UTF-8"><title>Short URLS</title></head><body>
+            <h1>Short URLs</h1>
+            <ul>
+            ${urls.map(url => `<li><code><a href="https://dhw.wien/s/${encodeURIComponent(url.slug)}" target="_blank">https://dhw.wien/s/${encodeURIComponent(url.slug)}</a></code> &mdash; <code>${url.url}</code></li>`).join("\n")}
+            </ul>
+        </body></html>`
+        );
+    } catch (e) {
+        console.error(e);
+        return res.status(500).send("Internal Server Error.");
+    }
+});
+
+/**
  * Deletes the ignore cookie.
  */
 app.get(["/count"], (req, res) => {
