@@ -23,14 +23,14 @@
   },
   "homepage": "https://github.com/diehauswirtschaft/schurli#readme",
   "dependencies": {
-    "@google-cloud/firestore": "^2.6.1",
+    "@google-cloud/firestore": "^4.5.0",
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
-    "express-validator": "^6.6.0",
-    "matomo-tracker": "^2.2.2",
+    "express-validator": "^6.6.1",
+    "matomo-tracker": "^2.2.4",
     "nconf": "^0.10.0"
   },
   "devDependencies": {
-    "nodemon": "^1.19.4"
+    "nodemon": "^2.0.6"
   }
 }
