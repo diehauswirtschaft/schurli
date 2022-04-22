@@ -28,7 +28,7 @@
     "express": "^4.17.1",
     "express-validator": "^6.10.0",
     "matomo-tracker": "^2.2.4",
-    "nconf": "^0.11.2"
+    "nconf": "^0.11.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
